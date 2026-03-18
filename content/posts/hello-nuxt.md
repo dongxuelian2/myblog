@@ -2,6 +2,10 @@
 title: Hello Nuxt
 description: 第一篇测试文章，确认列表和详情可用。
 date: 2026-03-17
+tags:
+  - Nuxt
+  - 入门
+  - 搭建
 ---
 
 这是第一篇文章。
