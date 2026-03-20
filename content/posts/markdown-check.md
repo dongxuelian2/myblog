@@ -6,6 +6,8 @@ tags:
   - Markdown
   - 排版
   - 示例
+cover: /images/covers/markdown-check.svg
+coverAlt: 以细线和柔和色块组合的抽象封面，用于 Markdown 渲染检查。
 ---
 
 ## 二级标题
@@ -16,8 +18,8 @@ tags:
 - 无序列表 B
 
 ```ts
-const message = "Nuxt Content works"
-console.log(message)
+const message = "Nuxt Content works";
+console.log(message);
 ```
 
 > 这是引用块示例。

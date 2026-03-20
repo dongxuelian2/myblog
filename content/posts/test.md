@@ -7,7 +7,11 @@ tags:
   - Nuxt
   - Demo
   - Longform
+cover: /images/covers/longform-study.svg
+coverAlt: 带有暖橙和蓝灰色层次的抽象封面，用于长文渲染测试。
+featured: true
 ---
+
 # 长文渲染测试
 
 这篇文章没有明确主题，目的很直接，就是把常见和不那么常见的 Markdown 元素尽量堆在一起，看看页面在长文场景下是否还能保持稳定、可读、没有奇怪的间距问题。正文会刻意混合中文段落、英文短句、代码块、表格、引用、列表和分隔线，用来观察字体节奏、段落呼吸感、以及右侧元信息区在页面滚动过程中的表现。
@@ -18,7 +22,7 @@ tags:
 
 这是一个普通段落，长度故意拉长一些。人在阅读长文时，首先感知到的不是具体内容，而是信息密度与视觉秩序。如果一屏里每个段落都挤在一起，读者会很快失去耐心；如果每个块之间距离过大，页面又会显得松散、发空。一个好的正文样式应该让读者几乎意识不到样式本身，而是顺着内容自然向下滑动。
 
-这里再补一些强调元素，确认它们不会破坏行高：**粗体文本**、*斜体文本*、`行内代码`、以及同时包含中英文的 mixed content sentence。再额外加入一个较长的内联代码片段 `const articleState = { mode: 'reading', stickyMeta: true }`，检查窄屏或正文栏较窄时是否会出现突兀的断行表现。
+这里再补一些强调元素，确认它们不会破坏行高：**粗体文本**、_斜体文本_、`行内代码`、以及同时包含中英文的 mixed content sentence。再额外加入一个较长的内联代码片段 `const articleState = { mode: 'reading', stickyMeta: true }`，检查窄屏或正文栏较窄时是否会出现突兀的断行表现。
 
 ### 小节：连续段落
 
@@ -81,23 +85,23 @@ tags:
 
 ```ts
 type ArticleMeta = {
-  title: string
-  date: string
-  tags: string[]
-}
+  title: string;
+  date: string;
+  tags: string[];
+};
 
 function estimateReadingTime(text: string) {
-  const characters = text.replace(/\s+/g, '').length
-  return Math.max(1, Math.ceil(characters / 300))
+  const characters = text.replace(/\s+/g, "").length;
+  return Math.max(1, Math.ceil(characters / 300));
 }
 
 const meta: ArticleMeta = {
-  title: 'Long Markdown Test',
-  date: '2026-03-18',
-  tags: ['Test', 'Longform'],
-}
+  title: "Long Markdown Test",
+  date: "2026-03-18",
+  tags: ["Test", "Longform"],
+};
 
-console.log(meta.title, estimateReadingTime('这是一段用于测试阅读时间的文本'))
+console.log(meta.title, estimateReadingTime("这是一段用于测试阅读时间的文本"));
 ```
 
 再放一个更宽的代码块，故意包含更长的行，确认 `pre` 是否能横向滚动，而不是把布局撑坏：
@@ -138,12 +142,12 @@ int main() {
 
 下面这张表没有业务意义，纯粹是为了观察表格边界、对齐和在窄宽度下的可读性。
 
-| 模块 | 用途 | 内容密度 | 风险点 |
-| --- | --- | --- | --- |
-| 首页 | 作为入口页 | 低 | 容易空 |
-| 文章列表 | 展示与筛选文章 | 中 | 条件组合增多后状态容易混乱 |
-| 文章详情 | 承载核心阅读体验 | 高 | 长文、代码块、图片、引用都可能影响布局 |
-| 右侧信息栏 | 展示辅助信息 | 低 | 宽度过大时会挤压正文 |
+| 模块       | 用途             | 内容密度 | 风险点                                 |
+| ---------- | ---------------- | -------- | -------------------------------------- |
+| 首页       | 作为入口页       | 低       | 容易空                                 |
+| 文章列表   | 展示与筛选文章   | 中       | 条件组合增多后状态容易混乱             |
+| 文章详情   | 承载核心阅读体验 | 高       | 长文、代码块、图片、引用都可能影响布局 |
+| 右侧信息栏 | 展示辅助信息     | 低       | 宽度过大时会挤压正文                   |
 
 ## 第六节：分隔线与节奏变化
 
@@ -171,9 +175,9 @@ int main() {
 
 最后再给一个短表格：
 
-| 项目 | 状态 |
-| --- | --- |
-| 正文宽度 | 稳定 |
+| 项目     | 状态   |
+| -------- | ------ |
+| 正文宽度 | 稳定   |
 | 右栏宽度 | 已收窄 |
 | 长文测试 | 已补齐 |
 

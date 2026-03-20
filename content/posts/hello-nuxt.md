@@ -6,6 +6,8 @@ tags:
   - Nuxt
   - 入门
   - 搭建
+cover: /images/covers/hello-nuxt.svg
+coverAlt: 柔和米色底上的几何线条封面，用于 Hello Nuxt 文章。
 ---
 
 这是第一篇文章。

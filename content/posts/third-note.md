@@ -6,6 +6,8 @@ tags:
   - 随笔
   - 更新
   - 示例
+cover: /images/covers/third-note.svg
+coverAlt: 绿色与米色混合的抽象封面，用于第三篇短文。
 ---
 
 这是第三篇测试文章，内容很短。

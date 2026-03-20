@@ -1,10 +1,21 @@
 export default defineNuxtConfig({
-  modules: ['@nuxt/content'],
-  css: ['~/assets/css/main.css'],
+  compatibilityDate: "2026-03-19",
+  modules: ["@nuxt/content", "@nuxtjs/tailwindcss"],
+  css: ["~/assets/css/main.css"],
+  tailwindcss: {
+    viewer: false,
+  },
+  mdc: {
+    highlight: {
+      // Keep the default bundled languages and add C++ so fenced `cpp` / `c++`
+      // blocks do not fall back to plain text.
+      preload: ["cpp"],
+    },
+  },
   app: {
-    baseURL: process.env.NUXT_APP_BASE_URL || '/',
+    baseURL: process.env.NUXT_APP_BASE_URL || "/",
   },
   nitro: {
-    preset: 'static',
+    preset: "static",
   },
-})
+});
