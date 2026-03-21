@@ -14,19 +14,12 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <section class="space-y-8" aria-label="文章筛选与排序">
-    <div class="editorial-rule pb-4">
-      <p class="text-[1.7rem] font-normal leading-none text-ink">
-        Filter and sort
-      </p>
-    </div>
-
-    <label class="grid gap-3 editorial-rule pb-5">
-      <span class="field-label">Sort by</span>
-
+  <section class="space-y-6" aria-label="筛选与排序">
+    <label class="grid gap-2 border-b border-outline pb-5">
+      <span class="field-label">排序</span>
       <select
         :value="sortBy"
-        class="w-full border-0 bg-transparent px-0 text-base font-normal text-ink focus:outline-none"
+        class="w-full border-0 bg-transparent px-0 font-mono text-[0.8125rem] text-ink focus:outline-none"
         @change="
           emit(
             'update:sortBy',
@@ -34,17 +27,17 @@ const emit = defineEmits<{
           )
         "
       >
-        <option value="date-desc">Newest first</option>
-        <option value="date-asc">Oldest first</option>
-        <option value="title-asc">Title A-Z</option>
-        <option value="title-desc">Title Z-A</option>
+        <option value="date-desc">最新优先</option>
+        <option value="date-asc">最早优先</option>
+        <option value="title-asc">标题 A → Z</option>
+        <option value="title-desc">标题 Z → A</option>
       </select>
     </label>
 
-    <div class="space-y-3">
-      <p class="field-label">Category</p>
+    <div class="space-y-2.5">
+      <p class="field-label">分类</p>
 
-      <div class="flex flex-col items-start gap-3">
+      <div class="flex flex-col items-start gap-2">
         <button
           class="chip-control"
           :class="{ 'chip-control-active': selectedTag === 'all' }"
@@ -52,7 +45,7 @@ const emit = defineEmits<{
           :aria-pressed="selectedTag === 'all'"
           @click="emit('update:selectedTag', 'all')"
         >
-          全部文章
+          全部
         </button>
 
         <button

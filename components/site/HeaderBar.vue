@@ -8,29 +8,28 @@ const links = [
 
 <template>
   <header
-    class="sticky top-0 z-40 border-b border-outline/70 bg-paper/88 backdrop-blur-xl"
+    class="sticky top-[2px] z-40 border-b border-outline bg-paper/90 backdrop-blur-md"
   >
-    <div class="site-shell flex items-center justify-between gap-6 py-4">
-      <NuxtLink to="/" class="text-ink no-underline">
-        <span class="font-serif text-[1.45rem] font-medium tracking-[-0.03em]"
-          >MyBlog</span
-        >
+    <div class="site-shell flex h-14 items-center justify-between">
+      <NuxtLink
+        to="/"
+        class="group text-lg font-semibold tracking-tight text-ink no-underline"
+      >
+        <span class="inline-block transition-transform duration-200 group-hover:scale-105">夏</span>
       </NuxtLink>
 
-      <div class="flex items-center gap-6">
-        <nav class="flex items-center gap-6" aria-label="主导航">
-          <NuxtLink
-            v-for="link in links"
-            :key="link.to"
-            :to="link.to"
-            class="nav-pill"
-            active-class="nav-pill-active"
-            exact-active-class="nav-pill-active"
-          >
-            {{ link.label }}
-          </NuxtLink>
-        </nav>
-      </div>
+      <nav class="flex items-center gap-7" aria-label="主导航">
+        <NuxtLink
+          v-for="link in links"
+          :key="link.to"
+          :to="link.to"
+          class="nav-link"
+          active-class="nav-link-active"
+          exact-active-class="nav-link-active"
+        >
+          {{ link.label }}
+        </NuxtLink>
+      </nav>
     </div>
   </header>
 </template>

@@ -1,25 +1,69 @@
 ---
-title: Markdown 渲染检查
-description: 验证标题、列表、代码块等最常见语法。
+title: Markdown 排版效果检查
+description: 用一篇文章覆盖所有常见 Markdown 语法，验证博客的排版渲染是否稳定。
 date: 2026-03-16
 tags:
   - Markdown
   - 排版
-  - 示例
 cover: /images/covers/markdown-check.svg
-coverAlt: 以细线和柔和色块组合的抽象封面，用于 Markdown 渲染检查。
+coverAlt: 模拟文本行距与代码块排版的几何抽象封面。
 ---
 
-## 二级标题
+## 为什么需要这篇文章
 
-这里有一段普通文本，下面放几个常见元素。
+每次调整排版样式之后，都需要一篇涵盖各种元素的文章来做回归测试。这篇文章没有实际主题，纯粹是排版检查用。
 
-- 无序列表 A
-- 无序列表 B
+## 段落与强调
+
+普通段落的字号是 17px，行高 1.9，阅读列宽 44rem。这些数值是针对中文阅读优化的——中文字符比拉丁字母宽，行距需要更大才不会显得拥挤。
+
+这里测试几种行内样式：**粗体文本**、_斜体文本_、`行内代码`。再来一个较长的行内代码片段 `const config = { mode: 'production', target: 'static' }`，观察它在窄屏下的换行表现。
+
+## 列表
+
+无序列表：
+
+- Tailwind CSS 的 typography 插件提供了 `prose` 类
+- 自定义变体 `prose-journal` 覆盖了默认样式
+- 所有排版决策集中在 `tailwind.config.ts` 里管理
+
+有序列表：
+
+1. 先确定阅读列宽
+2. 再调整字号和行高
+3. 然后处理标题、引用、代码块的间距
+4. 最后检查移动端表现
+
+## 代码块
 
 ```ts
-const message = "Nuxt Content works";
-console.log(message);
+interface PostItem {
+  title: string;
+  date: string;
+  tags: string[];
+  featured?: boolean;
+}
+
+function sortByDate(posts: PostItem[]): PostItem[] {
+  return posts.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+}
 ```
 
-> 这是引用块示例。
+## 引用
+
+> 好的排版是透明的。读者不应该意识到排版的存在，而是顺着内容自然地往下读。
+
+## 表格
+
+| 属性       | 值       | 说明             |
+| ---------- | -------- | ---------------- |
+| 字号       | 17px     | 中文正文基准     |
+| 行高       | 1.9      | 适合中文密度     |
+| 列宽       | 44rem    | 每行约 28-32 字  |
+| 段距       | 1.5em    | 段落间呼吸空间   |
+
+---
+
+以上覆盖了博客中最常用的 Markdown 元素。如果这些都渲染正常，基本的排版系统就是稳定的。

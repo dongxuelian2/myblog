@@ -15,19 +15,14 @@ const posts = computed(() => postsData.value ?? []);
 
 const tags = computed(() => {
   const counter = new Map<string, number>();
-
   for (const post of posts.value) {
     for (const tag of post.tags || []) {
       counter.set(tag, (counter.get(tag) ?? 0) + 1);
     }
   }
-
   return Array.from(counter.entries())
     .sort((a, b) => {
-      if (b[1] !== a[1]) {
-        return b[1] - a[1];
-      }
-
+      if (b[1] !== a[1]) return b[1] - a[1];
       return a[0].localeCompare(b[0], "zh-CN");
     })
     .slice(0, 7)
@@ -47,23 +42,14 @@ const filteredAndSortedPosts = computed(() => {
     const matchedTag =
       selectedTag.value === "all" ||
       (Array.isArray(post.tags) && post.tags.includes(selectedTag.value));
-
-    if (!matchedTag) {
-      return false;
-    }
-
-    if (!normalizedSearch.value) {
-      return true;
-    }
-
+    if (!matchedTag) return false;
+    if (!normalizedSearch.value) return true;
     const searchPool = [post.title, post.description, ...(post.tags || [])]
       .filter(Boolean)
       .join(" ")
       .toLowerCase();
-
     return searchPool.includes(normalizedSearch.value);
   });
-
   return sortPosts(filtered, sortBy.value);
 });
 </script>

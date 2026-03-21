@@ -1,44 +1,70 @@
-<script setup lang="ts">
-const sections = [
-  {
-    title: "写作对象",
-    body: "这个博客主要容纳中文长文、短笔记、产品观察和阅读记录。它不追求像产品官网那样把每一个模块都包装成视觉卖点，更希望像一本缓慢更新的笔记册。",
-  },
-  {
-    title: "页面态度",
-    body: "页面应该把路径交代清楚，但不需要不停解释自己。导航、筛选、按钮、边界和动效都应该克制，真正被读者看到的应该是标题、摘要和正文。",
-  },
-  {
-    title: "更新方式",
-    body: "所有内容都来自 content 目录下的 Markdown。新增文章时，只需要补好标题、摘要、日期、标签和封面，站点会沿用同一套版式继续生长。",
-  },
-];
-</script>
-
 <template>
-  <article class="mx-auto w-full max-w-reading space-y-10">
-    <header class="border-b border-outline/75 pb-8">
-      <p class="eyebrow-label">About</p>
-      <h1 class="mt-4 text-[3.35rem] font-medium leading-[1.02] text-ink">
-        关于这个博客
-      </h1>
-      <p class="mt-5 text-lg leading-9 text-ink-soft">
-        这是一个以写作和阅读为中心的个人博客。它应该像一本持续增补的册子，而不是一个不断向读者推销版式存在感的模板。
-      </p>
+  <article class="mx-auto w-full max-w-reading">
+    <!-- Author header with geometric frame -->
+    <header class="enter flex items-start gap-6 border-b border-outline pb-8">
+      <div class="relative shrink-0">
+        <!-- Geometric frame — offset border creates depth -->
+        <div class="absolute -right-1 -top-1 h-16 w-16 rounded-lg border border-accent/20" aria-hidden="true" />
+        <img
+          src="/images/avatar.svg"
+          alt="夏"
+          class="relative h-16 w-16 rounded-lg"
+        />
+      </div>
+      <div>
+        <h1 class="text-2xl font-semibold tracking-tight text-ink">夏</h1>
+        <p class="mt-2 text-[0.9375rem] leading-relaxed text-ink-soft">
+          前端工程师，关注交互设计、信息架构与中文排版。这个博客记录产品观察、技术笔记和读书摘要，偶尔写一些不那么有用的东西。
+        </p>
+      </div>
     </header>
 
-    <section class="space-y-8">
-      <div
-        v-for="section in sections"
-        :key="section.title"
-        class="border-b border-outline/75 pb-8"
-      >
-        <h2 class="text-[2rem] font-medium leading-tight text-ink">
-          {{ section.title }}
-        </h2>
-        <p class="mt-4 text-base leading-8 text-ink-soft">
-          {{ section.body }}
+    <!-- Content sections -->
+    <section class="mt-8 space-y-6">
+      <div class="enter enter-d1 border-b border-outline pb-6">
+        <div class="flex items-baseline gap-3">
+          <span class="index-number">01</span>
+          <h2 class="text-base font-medium text-ink">写些什么</h2>
+        </div>
+        <p class="mt-3 text-[0.9375rem] leading-relaxed text-ink-soft">
+          主要写三类内容：产品和交互设计的观察笔记，前端工程中碰到的具体问题与解法，以及读完一本书之后的整理。没有固定更新频率，写完一篇发一篇。
         </p>
+      </div>
+
+      <div class="enter enter-d2 border-b border-outline pb-6">
+        <div class="flex items-baseline gap-3">
+          <span class="index-number">02</span>
+          <h2 class="text-base font-medium text-ink">技术栈</h2>
+        </div>
+        <p class="mt-3 text-[0.9375rem] leading-relaxed text-ink-soft">
+          这个站点用 Nuxt 3 + Nuxt Content 构建，样式基于 Tailwind CSS，部署在 GitHub Pages 上。所有内容都是 Markdown 文件，没有数据库，没有 CMS。源代码公开。
+        </p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="tag-label">#Nuxt</span>
+          <span class="tag-label">#Tailwind</span>
+          <span class="tag-label">#TypeScript</span>
+          <span class="tag-label">#Markdown</span>
+        </div>
+      </div>
+
+      <div class="enter enter-d3 pb-6">
+        <div class="flex items-baseline gap-3">
+          <span class="index-number">03</span>
+          <h2 class="text-base font-medium text-ink">联系</h2>
+        </div>
+        <div class="mt-3 flex items-center gap-5">
+          <a
+            href="https://github.com/xia"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="action-link group/gh"
+          >
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+            GitHub
+          </a>
+        </div>
       </div>
     </section>
   </article>

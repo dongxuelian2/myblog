@@ -1,14 +1,29 @@
-<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="900" rx="48" fill="#F7F1E8"/>
-  <rect x="86" y="86" width="1028" height="728" rx="40" fill="#FFFDF8"/>
-  <rect x="168" y="154" width="864" height="604" rx="36" fill="#F3ECE1"/>
-  <circle cx="890" cy="626" r="118" fill="#D7E2E8"/>
-  <circle cx="320" cy="286" r="96" fill="#F2DDD0"/>
-  <path d="M306 272H768" stroke="#161412" stroke-width="26" stroke-linecap="round"/>
-  <path d="M306 344H660" stroke="#8DA5B3" stroke-width="16" stroke-linecap="round"/>
-  <path d="M306 448H892" stroke="#B8AD9D" stroke-width="14" stroke-linecap="round"/>
-  <path d="M306 514H732" stroke="#89986F" stroke-width="14" stroke-linecap="round"/>
-  <path d="M306 580H858" stroke="#D18459" stroke-width="14" stroke-linecap="round"/>
-  <path d="M306 648H640" stroke="#B8AD9D" stroke-width="14" stroke-linecap="round"/>
-  <rect x="777" y="219" width="142" height="142" rx="28" fill="#FFF7F0"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#fafafa"/>
+  <!-- Horizontal rules representing text lines -->
+  <rect x="100" y="100" width="600" height="1" fill="#e5e5e5"/>
+  <rect x="100" y="140" width="600" height="1" fill="#e5e5e5"/>
+  <rect x="100" y="180" width="600" height="1" fill="#e5e5e5"/>
+  <rect x="100" y="220" width="600" height="1" fill="#e5e5e5"/>
+  <rect x="100" y="260" width="600" height="1" fill="#e5e5e5"/>
+  <rect x="100" y="300" width="600" height="1" fill="#e5e5e5"/>
+  <rect x="100" y="340" width="600" height="1" fill="#e5e5e5"/>
+  <rect x="100" y="380" width="600" height="1" fill="#e5e5e5"/>
+  <rect x="100" y="420" width="600" height="1" fill="#e5e5e5"/>
+  <rect x="100" y="460" width="600" height="1" fill="#e5e5e5"/>
+  <rect x="100" y="500" width="600" height="1" fill="#e5e5e5"/>
+  <!-- Title block -->
+  <rect x="100" y="107" width="180" height="6" fill="#0c0c0c"/>
+  <!-- Text blocks -->
+  <rect x="100" y="147" width="400" height="3" fill="#8b8b8b"/>
+  <rect x="100" y="187" width="360" height="3" fill="#8b8b8b"/>
+  <rect x="100" y="227" width="420" height="3" fill="#8b8b8b"/>
+  <!-- Code block -->
+  <rect x="100" y="274" width="280" height="40" rx="2" fill="#f2f2f2" stroke="#e5e5e5" stroke-width="1"/>
+  <rect x="112" y="288" width="120" height="3" fill="#c53030"/>
+  <rect x="112" y="298" width="80" height="3" fill="#0c0c0c"/>
+  <!-- Quote accent line -->
+  <rect x="100" y="348" width="2" height="24" fill="#c53030"/>
+  <rect x="112" y="352" width="200" height="3" fill="#3d3d3d"/>
+  <rect x="112" y="362" width="160" height="3" fill="#3d3d3d"/>
 </svg>

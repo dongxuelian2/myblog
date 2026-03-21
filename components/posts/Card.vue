@@ -5,37 +5,8 @@ import { formatPostDate, resolvePostPath } from "~/utils/posts";
 const props = defineProps<{
   post: PostItem;
   variant?: "feature" | "list";
+  index?: number;
 }>();
-
-const placeholderStyles = [
-  {
-    shell: "from-sunrise-soft via-white to-sea-soft",
-    orb: "bg-sunrise/25",
-    line: "bg-sunrise/65",
-  },
-  {
-    shell: "from-sea-soft via-white to-moss-soft",
-    orb: "bg-sea/25",
-    line: "bg-sea/60",
-  },
-  {
-    shell: "from-moss-soft via-white to-sunrise-soft",
-    orb: "bg-moss/20",
-    line: "bg-moss/55",
-  },
-];
-
-function hashValue(value: string) {
-  return Array.from(value).reduce(
-    (total, current) => total + current.charCodeAt(0),
-    0,
-  );
-}
-
-const visual = computed(() => {
-  const seed = props.post.tags?.[0] || props.post.title || "journal";
-  return placeholderStyles[hashValue(seed) % placeholderStyles.length];
-});
 
 const initials = computed(() => {
   const cleaned = props.post.title.replace(/\s+/g, "");
@@ -43,106 +14,110 @@ const initials = computed(() => {
 });
 
 const postPath = computed(() => resolvePostPath(props.post));
-const metaLine = computed(() => {
-  const secondary = props.post.tags.slice(
-    0,
-    props.variant === "feature" ? 2 : 1,
-  );
-  return [formatPostDate(props.post.date), ...secondary].join(" · ");
-});
+
+const paddedIndex = computed(() =>
+  props.index != null ? String(props.index).padStart(2, "0") : null,
+);
 </script>
 
 <template>
+  <!-- Feature variant: horizontal card with image -->
   <article
-    :class="[
-      variant === 'feature'
-        ? 'grid gap-7 pb-10 editorial-rule xl:grid-cols-[minmax(16rem,26rem)_minmax(0,1fr)]'
-        : 'grid gap-5 py-8 editorial-rule md:grid-cols-[11rem_minmax(0,1fr)]',
-    ]"
+    v-if="variant === 'feature'"
+    class="card-row grid gap-6 border-b border-outline py-7 md:grid-cols-[minmax(14rem,22rem)_minmax(0,1fr)]"
   >
-    <div
-      :class="[
-        'relative isolate overflow-hidden bg-surface-muted',
-        visual.shell,
-        variant === 'feature'
-          ? 'aspect-[4/3] rounded-[1.35rem] bg-gradient-to-br'
-          : 'aspect-[4/3] rounded-[1rem] bg-gradient-to-br',
-      ]"
-    >
-      <img
-        v-if="post.cover"
-        :src="post.cover"
-        :alt="post.coverAlt || ''"
-        class="h-full w-full object-cover"
-      />
-
-      <template v-else>
-        <div
-          class="absolute left-8 top-8 h-24 w-24 rounded-full blur-3xl"
-          :class="visual.orb"
+    <NuxtLink :to="postPath" class="group block">
+      <div
+        class="relative aspect-[4/3] overflow-hidden rounded-lg bg-surface-muted transition-shadow duration-300 group-hover:shadow-soft"
+      >
+        <img
+          v-if="post.cover"
+          :src="post.cover"
+          :alt="post.coverAlt || ''"
+          class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
         />
         <div
-          class="absolute inset-x-5 bottom-5 space-y-4 rounded-[1.15rem] border border-white/45 bg-white/45 p-4 backdrop-blur-sm"
+          v-else
+          class="flex h-full w-full items-center justify-center"
         >
-          <div class="flex flex-wrap items-center gap-2">
-            <span
-              class="text-[0.72rem] uppercase tracking-[0.22em] text-ink-subtle"
-            >
-              {{ post.tags[0] || "Journal" }}
-            </span>
-          </div>
-
-          <p class="font-serif text-3xl leading-none text-ink md:text-4xl">
+          <span class="font-mono text-2xl font-medium text-ink-subtle/20">
             {{ initials }}
-          </p>
-
-          <div class="space-y-2">
-            <div class="h-1.5 w-28 rounded-full" :class="visual.line" />
-            <div class="h-1.5 w-36 rounded-full bg-white/80" />
-          </div>
+          </span>
         </div>
-      </template>
-    </div>
+      </div>
+    </NuxtLink>
 
     <div class="flex min-w-0 flex-col justify-center">
-      <p class="text-sm font-normal text-ink-subtle">
-        {{ metaLine }}
-      </p>
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="meta-mono">{{ formatPostDate(post.date) }}</span>
+        <span
+          v-for="tag in post.tags.slice(0, 2)"
+          :key="tag"
+          class="tag-label"
+        >
+          #{{ tag }}
+        </span>
+      </div>
 
-      <h2
-        :class="
-          variant === 'feature'
-            ? 'mt-4 max-w-3xl text-[2.35rem] font-medium leading-[1.08] text-ink md:text-[3rem]'
-            : 'mt-3 max-w-3xl text-[1.9rem] font-medium leading-[1.14] text-ink md:text-[2.2rem]'
-        "
-      >
+      <h2 class="mt-3 text-[1.5rem] font-semibold leading-tight tracking-tight text-ink">
         <NuxtLink
           :to="postPath"
-          class="text-ink no-underline hover:text-ink-soft"
+          class="text-ink no-underline transition-colors duration-200 hover:text-accent"
         >
           {{ post.title }}
         </NuxtLink>
       </h2>
 
-      <p
-        :class="
-          variant === 'feature'
-            ? 'mt-4 max-w-2xl text-base leading-8 text-ink-soft'
-            : 'mt-4 max-w-2xl text-base leading-8 text-ink-soft'
-        "
-      >
-        {{
-          post.description ||
-          "这是一篇围绕中文写作、产品思考与长期记录展开的文章。"
-        }}
+      <p class="mt-3 line-clamp-2 text-[0.9375rem] leading-relaxed text-ink-soft">
+        {{ post.description || "这是一篇尚未添加摘要的文章。" }}
       </p>
 
-      <div class="mt-6">
-        <NuxtLink :to="postPath" class="action-link">
+      <div class="mt-5">
+        <NuxtLink :to="postPath" class="action-link group/link">
           阅读全文
-          <span aria-hidden="true">↗</span>
+          <svg
+            class="h-3.5 w-3.5 transition-transform duration-200 group-hover/link:translate-x-0.5"
+            viewBox="0 0 16 16" fill="none" aria-hidden="true"
+          >
+            <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
         </NuxtLink>
       </div>
+    </div>
+  </article>
+
+  <!-- List variant: compact row with index number -->
+  <article
+    v-else
+    class="card-row group flex items-baseline gap-4 border-b border-outline py-3.5"
+  >
+    <!-- Swiss-style index number -->
+    <span v-if="paddedIndex" class="hidden shrink-0 index-number sm:inline">
+      {{ paddedIndex }}
+    </span>
+
+    <div class="flex min-w-0 flex-1 items-baseline justify-between gap-4">
+      <div class="flex min-w-0 items-baseline gap-3">
+        <h2 class="truncate text-[0.9375rem] font-medium text-ink">
+          <NuxtLink
+            :to="postPath"
+            class="text-ink no-underline transition-colors duration-200 group-hover:text-accent"
+          >
+            {{ post.title }}
+          </NuxtLink>
+        </h2>
+        <span
+          v-for="tag in post.tags.slice(0, 1)"
+          :key="tag"
+          class="hidden shrink-0 tag-label sm:inline"
+        >
+          #{{ tag }}
+        </span>
+      </div>
+
+      <span class="shrink-0 meta-mono">
+        {{ formatPostDate(post.date) }}
+      </span>
     </div>
   </article>
 </template>

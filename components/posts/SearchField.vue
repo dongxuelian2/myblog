@@ -9,10 +9,10 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <label class="grid gap-3">
+  <label class="block">
     <span class="input-shell">
       <svg
-        class="h-4 w-4 text-ink-subtle"
+        class="h-3.5 w-3.5 shrink-0 text-ink-subtle"
         viewBox="0 0 20 20"
         fill="none"
         aria-hidden="true"
@@ -28,9 +28,9 @@ const emit = defineEmits<{
 
       <input
         :value="modelValue"
-        class="w-full border-0 bg-transparent p-0 text-base font-normal text-ink placeholder:text-ink-subtle focus:outline-none"
+        class="w-full border-0 bg-transparent p-0 font-mono text-[0.8125rem] text-ink placeholder:text-ink-subtle/60 focus:outline-none"
         type="search"
-        placeholder="Search posts"
+        placeholder="搜索文章..."
         aria-label="搜索文章"
         autocomplete="off"
         @input="
