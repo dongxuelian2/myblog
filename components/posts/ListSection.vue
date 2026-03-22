@@ -27,7 +27,7 @@ const { zone } = useRouteZone();
     <aside class="enter lg:sticky lg:top-24 lg:self-start">
       <div
         class="mb-4 h-[3px] w-12 rounded-sm"
-        :style="{ background: zone.color }"
+        style="background: var(--zone-color);"
         aria-hidden="true"
       />
       <PostsFilterBar

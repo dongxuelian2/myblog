@@ -10,19 +10,19 @@ const ZONES: Record<string, Omit<RouteZone, "code"> & { codePrefix: string }> = 
     id: "H",
     codePrefix: "H",
     label: "首页",
-    color: "#c53030",
+    color: "#a23b2a",
   },
   posts: {
     id: "P",
     codePrefix: "P",
     label: "文章",
-    color: "#2b4c7e",
+    color: "#3f6474",
   },
   about: {
     id: "A",
     codePrefix: "A",
     label: "关于",
-    color: "#4a4a4a",
+    color: "#6d5c4c",
   },
 };
 

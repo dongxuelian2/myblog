@@ -80,7 +80,7 @@ const emit = defineEmits<{
   background: linear-gradient(
     to bottom,
     color-mix(in srgb, var(--zone-color) 28%, white),
-    rgba(229, 229, 229, 0.94)
+    rgba(var(--outline-rgb) / 0.94)
   );
 }
 
@@ -120,7 +120,7 @@ const emit = defineEmits<{
   justify-self: end;
   border-radius: 9999px;
   overflow: hidden;
-  background: rgba(12, 12, 12, 0.07);
+  background: rgba(var(--ink-rgb) / 0.07);
 }
 
 .post-bookmark__meter span {
@@ -150,15 +150,15 @@ const emit = defineEmits<{
   width: 100%;
   padding: 0.45rem 1.35rem 0.45rem 0;
   text-align: left;
-  color: #6d6d6d;
+  color: rgb(var(--ink-soft-rgb));
 }
 
 .post-bookmark__button:hover {
-  color: #0c0c0c;
+  color: rgb(var(--ink-rgb));
 }
 
 .post-bookmark__button--active {
-  color: #0c0c0c;
+  color: rgb(var(--ink-rgb));
 }
 
 .post-bookmark__entry--sub .post-bookmark__button {
@@ -183,7 +183,7 @@ const emit = defineEmits<{
   height: 0.52rem;
   border-radius: 9999px;
   border: 1px solid color-mix(in srgb, var(--zone-color) 40%, white);
-  background: #fafafa;
+  background: rgb(var(--paper-rgb));
   transition:
     transform 0.2s ease,
     background 0.2s ease,
@@ -202,7 +202,7 @@ const emit = defineEmits<{
   gap: 0.7rem;
   margin-left: auto;
   padding-right: 1.1rem;
-  color: #8b8b8b;
+  color: rgb(var(--ink-subtle-rgb));
   font-family: "JetBrains Mono", monospace;
   font-size: 0.72rem;
   letter-spacing: 0.12em;
@@ -218,7 +218,7 @@ const emit = defineEmits<{
 }
 
 .post-bookmark__back:hover {
-  color: #0c0c0c;
+  color: rgb(var(--ink-rgb));
 }
 
 @media (max-width: 1279px) {

@@ -7,6 +7,7 @@ const props = defineProps<{
   variant?: "feature" | "list";
   index?: number;
 }>();
+const assetPath = useAssetPath();
 
 const initials = computed(() => {
   const cleaned = props.post.title.replace(/\s+/g, "");
@@ -32,7 +33,7 @@ const paddedIndex = computed(() =>
       >
         <img
           v-if="post.cover"
-          :src="post.cover"
+          :src="assetPath(post.cover)"
           :alt="post.coverAlt || ''"
           class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
         />

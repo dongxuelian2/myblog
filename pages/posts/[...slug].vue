@@ -9,6 +9,7 @@ import {
 } from "~/utils/posts";
 
 const route = useRoute();
+const assetPath = useAssetPath();
 
 const { data: post } = await useAsyncData(route.path, () =>
   queryCollection("posts").path(route.path).first(),
@@ -261,7 +262,7 @@ const progressPercent = computed(() => `${Math.round(progress.value * 100)}%`);
       class="enter enter-d2 mt-8 overflow-hidden rounded-lg border border-outline bg-surface-muted"
     >
       <img
-        :src="post.cover"
+        :src="assetPath(post.cover)"
         :alt="post.coverAlt || ''"
         class="aspect-[16/9] w-full object-cover"
       />

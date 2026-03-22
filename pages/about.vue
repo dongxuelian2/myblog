@@ -2,17 +2,18 @@
 import { formatStationCode } from "~/composables/useRouteZone";
 
 const { zone } = useRouteZone();
+const assetPath = useAssetPath();
 </script>
 
 <template>
   <article class="mx-auto w-full max-w-reading">
     <header class="enter flex items-start gap-6 border-b border-outline pb-8">
       <div class="relative shrink-0">
-        <div class="absolute -right-1 -top-1 h-16 w-16 rounded-lg border" style="border-color: var(--zone-color, #4a4a4a); opacity: 0.2;" aria-hidden="true" />
+        <div class="absolute -right-1 -top-1 h-16 w-16 rounded-lg border border-[color:var(--zone-color)] opacity-20" aria-hidden="true" />
         <img
-          src="/images/avatar.svg"
+          :src="assetPath('/images/profile/avatar.jpg')"
           alt="夏"
-          class="relative h-16 w-16 rounded-lg"
+          class="relative h-16 w-16 rounded-lg object-cover"
         />
       </div>
       <div>
