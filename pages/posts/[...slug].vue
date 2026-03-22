@@ -226,7 +226,7 @@ const progressPercent = computed(() => `${Math.round(progress.value * 100)}%`);
       </div>
 
       <h1
-        class="mt-4 w-full text-[2.5rem] font-semibold leading-[1.08] tracking-tight text-ink sm:text-[3rem]"
+        class="mt-4 w-full font-serif text-[2.625rem] font-medium leading-[1.14] tracking-[-0.03em] text-ink sm:text-[3.25rem]"
       >
         {{ post?.title }}
       </h1>

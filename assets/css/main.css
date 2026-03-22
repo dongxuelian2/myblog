@@ -111,7 +111,7 @@
   }
 
   .home-marker {
-    @apply inline-flex items-center gap-3 self-start lg:self-end;
+    @apply inline-flex items-center gap-3 self-start lg:mt-[13.25rem];
   }
 
   .home-marker__avatar {
@@ -125,6 +125,28 @@
 
   .home-marker__name {
     @apply mt-1 text-sm font-medium tracking-tight text-ink;
+  }
+
+  .home-quote {
+    @apply max-w-[38rem] border-l border-outline pl-5;
+  }
+
+  .home-quote__body {
+    @apply font-serif text-[1.0625rem] font-medium italic leading-[1.92] text-ink-soft;
+    text-wrap: pretty;
+  }
+
+  .home-quote__footer {
+    @apply mt-3 flex items-center gap-3;
+  }
+
+  .home-quote__footer::before {
+    content: "";
+    @apply h-px w-6 bg-outline;
+  }
+
+  .home-quote__source {
+    @apply font-serif text-[0.9375rem] italic text-ink-subtle;
   }
 
   /* ── Signal line (top-of-page accent indicator) ── */

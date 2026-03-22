@@ -8,7 +8,7 @@ tags:
   - 排版
 cover: /images/posts/render-test/landscape-1920x1080.jpg
 coverAlt: 一张用于博客图片渲染测试的横向样张。
-featured: false
+featured: true
 ---
 
 ## 这篇文章测什么
