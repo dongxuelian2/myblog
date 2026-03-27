@@ -1,4 +1,4 @@
-import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, extname, join, relative, resolve } from "node:path";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
@@ -133,8 +133,12 @@ async function main() {
     },
   );
 
+  for (const sourceRelativePath of materializedImages.keys()) {
+    rmSync(resolve(localDir, sourceRelativePath), { force: true });
+  }
+
   console.log(
-    `Synced ${materializedImages.size} image(s) from ${relative(repoRoot, localDir)} to ${relative(repoRoot, outputDir)}.`,
+    `Synced ${materializedImages.size} image(s) from ${relative(repoRoot, localDir)} to ${relative(repoRoot, outputDir)} and removed the local originals.`,
   );
 }
 
