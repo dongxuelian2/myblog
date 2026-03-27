@@ -15,6 +15,8 @@ npm install
 npm run dev
 ```
 
+首次安装后会自动把 Git hooks 指向仓库内的 `.githooks/`。
+
 ## 构建静态站点
 
 ```bash
@@ -109,6 +111,46 @@ date: 2026-03-17
 - 需要解释背景时用 `::callout`
 - 每个大章节结尾用 `::key-points` 收束
 - 中段切换话题时优先用 `::section-break`，少用连续空白和硬插图
+
+## 本地图片提交流程
+
+平时先把图片丢进不纳入 Git 跟踪的目录：
+
+```text
+public/images-local/
+```
+
+在文章里直接写这个本地地址：
+
+```md
+![示意图](/images-local/posts/my-post/hero.jpg)
+```
+
+提交时会触发 `pre-commit` hook，自动完成这几件事：
+
+- 扫描暂存区里的 Markdown、Vue 和常见文本文件
+- 找出其中的 `/images-local/...` 链接
+- 用 `sharp` 压缩图片并输出到受 Git 跟踪的目录 `public/images/auto/`
+- 把文档里的链接改写成 `/images/auto/...`
+- 自动把改写后的文档和新图片重新加入暂存区
+
+例如：
+
+```md
+![示意图](/images-local/posts/my-post/hero.jpg)
+```
+
+会在提交前改成：
+
+```md
+![示意图](/images/auto/posts/my-post/hero.webp)
+```
+
+如果你手动 clone 了仓库但还没跑过安装脚本，也可以手动执行：
+
+```bash
+npm run setup:hooks
+```
 
 ## 回归检查
 
