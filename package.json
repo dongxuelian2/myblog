@@ -9,7 +9,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare && node scripts/setup-hooks.mjs",
     "setup:hooks": "node scripts/setup-hooks.mjs",
-    "sync:local-images": "node scripts/sync-local-images.mjs"
+    "sync:local-images": "node scripts/sync-local-images.mjs",
+    "sync:local-images:repair": "node scripts/sync-local-images.mjs --all-content"
   },
   "dependencies": {
     "@fontsource/jetbrains-mono": "^5.2.8",
