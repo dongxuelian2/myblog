@@ -20,7 +20,7 @@ withDefaults(
         <h3 class="mdc-key-points__title">{{ title }}</h3>
       </div>
     </header>
-    <div class="mdc-key-points__body">
+    <div class="mdc-key-points__body mdc-richtext">
       <slot />
     </div>
   </section>

@@ -75,7 +75,9 @@ function collectHeadings() {
   if (!articleContent.value) return;
 
   const headings = Array.from(
-    articleContent.value.querySelectorAll("h2, h3"),
+    articleContent.value.querySelectorAll(
+      ".prose-section-heading, .prose-subsection-heading",
+    ),
   ) as HTMLHeadingElement[];
 
   const seenIds = new Map<string, number>();
@@ -115,11 +117,14 @@ function updateReadingState() {
 
   const headingElements = tocItems.value
     .map((item) => document.getElementById(item.id))
-    .filter((element): element is HTMLElement => element instanceof HTMLElement);
+    .filter(
+      (element): element is HTMLElement => element instanceof HTMLElement,
+    );
 
   const currentHeading =
-    headingElements.findLast((heading) => heading.getBoundingClientRect().top <= 140) ??
-    headingElements[0];
+    headingElements.findLast(
+      (heading) => heading.getBoundingClientRect().top <= 140,
+    ) ?? headingElements[0];
 
   activeHeadingId.value = currentHeading?.id ?? "";
 }
@@ -201,9 +206,17 @@ const progressPercent = computed(() => `${Math.round(progress.value * 100)}%`);
       <NuxtLink to="/posts" class="action-link group/back">
         <svg
           class="h-3.5 w-3.5 transition-transform duration-200 group-hover/back:-translate-x-0.5"
-          viewBox="0 0 16 16" fill="none" aria-hidden="true"
+          viewBox="0 0 16 16"
+          fill="none"
+          aria-hidden="true"
         >
-          <path d="M9.5 3.5L5 8L9.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          <path
+            d="M9.5 3.5L5 8L9.5 12.5"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
         </svg>
         返回文章
       </NuxtLink>
@@ -216,11 +229,7 @@ const progressPercent = computed(() => `${Math.round(progress.value * 100)}%`);
       </div>
 
       <div class="flex flex-wrap items-center gap-2">
-        <span
-          v-for="tag in post?.tags"
-          :key="tag"
-          class="tag-label"
-        >
+        <span v-for="tag in post?.tags" :key="tag" class="tag-label">
           #{{ tag }}
         </span>
       </div>
@@ -231,10 +240,7 @@ const progressPercent = computed(() => `${Math.round(progress.value * 100)}%`);
         {{ post?.title }}
       </h1>
 
-      <div
-        v-if="post?.description"
-        class="post-dek mt-10 max-w-[42rem]"
-      >
+      <div v-if="post?.description" class="post-dek mt-10 max-w-[42rem]">
         <p class="text-[1rem] leading-[1.95] text-ink-soft sm:text-[1.0625rem]">
           {{ post.description }}
         </p>
@@ -270,7 +276,9 @@ const progressPercent = computed(() => `${Math.round(progress.value * 100)}%`);
 
     <!-- Content -->
     <div class="enter enter-d3 mx-auto mt-10 max-w-layout">
-      <div class="grid gap-10 xl:grid-cols-[13.5rem_minmax(0,44rem)] xl:items-start xl:gap-12">
+      <div
+        class="grid gap-10 xl:grid-cols-[14.75rem_minmax(0,44rem)] xl:items-start xl:gap-12"
+      >
         <aside class="order-1 xl:sticky xl:top-[6.5rem]">
           <PostsReadingBookmark
             :progress="progress"
@@ -293,10 +301,7 @@ const progressPercent = computed(() => `${Math.round(progress.value * 100)}%`);
     </div>
 
     <!-- Prev / Next — platform-style navigation -->
-    <nav
-      v-if="prevPost || nextPost"
-      class="mx-auto mt-16 max-w-reading"
-    >
+    <nav v-if="prevPost || nextPost" class="mx-auto mt-16 max-w-reading">
       <!-- Geometric separator -->
       <div class="geo-sep mb-6">
         <span class="eyebrow-label">继续阅读</span>

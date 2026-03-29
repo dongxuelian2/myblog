@@ -22,7 +22,7 @@ withDefaults(
         <h3 class="mdc-callout__title">{{ title }}</h3>
       </div>
     </header>
-    <div class="mdc-callout__body">
+    <div class="mdc-callout__body mdc-richtext">
       <slot />
     </div>
   </aside>

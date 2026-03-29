@@ -5,7 +5,8 @@
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: url("@fontsource/noto-sans-sc/files/noto-sans-sc-chinese-simplified-400-normal.woff2") format("woff2");
+  src: url("@fontsource/noto-sans-sc/files/noto-sans-sc-chinese-simplified-400-normal.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -13,7 +14,8 @@
   font-style: normal;
   font-display: swap;
   font-weight: 500;
-  src: url("@fontsource/noto-sans-sc/files/noto-sans-sc-chinese-simplified-500-normal.woff2") format("woff2");
+  src: url("@fontsource/noto-sans-sc/files/noto-sans-sc-chinese-simplified-500-normal.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -21,7 +23,8 @@
   font-style: normal;
   font-display: swap;
   font-weight: 600;
-  src: url("@fontsource/noto-sans-sc/files/noto-sans-sc-chinese-simplified-600-normal.woff2") format("woff2");
+  src: url("@fontsource/noto-sans-sc/files/noto-sans-sc-chinese-simplified-600-normal.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -29,7 +32,8 @@
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: url("@fontsource/noto-serif-sc/files/noto-serif-sc-chinese-simplified-400-normal.woff2") format("woff2");
+  src: url("@fontsource/noto-serif-sc/files/noto-serif-sc-chinese-simplified-400-normal.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -37,7 +41,8 @@
   font-style: normal;
   font-display: swap;
   font-weight: 500;
-  src: url("@fontsource/noto-serif-sc/files/noto-serif-sc-chinese-simplified-500-normal.woff2") format("woff2");
+  src: url("@fontsource/noto-serif-sc/files/noto-serif-sc-chinese-simplified-500-normal.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -45,7 +50,8 @@
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: url("@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+  src: url("@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -53,7 +59,8 @@
   font-style: normal;
   font-display: swap;
   font-weight: 600;
-  src: url("@fontsource/jetbrains-mono/files/jetbrains-mono-latin-600-normal.woff2") format("woff2");
+  src: url("@fontsource/jetbrains-mono/files/jetbrains-mono-latin-600-normal.woff2")
+    format("woff2");
 }
 
 @tailwind base;
@@ -74,13 +81,22 @@
 }
 
 @keyframes line-extend {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 @keyframes subtle-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 
 @layer base {
@@ -205,12 +221,24 @@
     animation: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
-  .enter-d1 { animation-delay: 0.06s; }
-  .enter-d2 { animation-delay: 0.12s; }
-  .enter-d3 { animation-delay: 0.18s; }
-  .enter-d4 { animation-delay: 0.24s; }
-  .enter-d5 { animation-delay: 0.30s; }
-  .enter-d6 { animation-delay: 0.36s; }
+  .enter-d1 {
+    animation-delay: 0.06s;
+  }
+  .enter-d2 {
+    animation-delay: 0.12s;
+  }
+  .enter-d3 {
+    animation-delay: 0.18s;
+  }
+  .enter-d4 {
+    animation-delay: 0.24s;
+  }
+  .enter-d5 {
+    animation-delay: 0.3s;
+  }
+  .enter-d6 {
+    animation-delay: 0.36s;
+  }
 
   /* ── Typography ── */
 
@@ -703,19 +731,19 @@
     @apply font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-ink-subtle;
   }
 
+  .mdc-richtext {
+    @apply text-[0.9375rem] leading-7 text-ink-soft;
+  }
+
   .mdc-lead__body {
     @apply mt-3 max-w-[42rem] text-[1.125rem] leading-[1.95] text-ink;
   }
 
-  .mdc-lead__body > :first-child,
-  .mdc-callout__body > :first-child,
-  .mdc-key-points__body > :first-child {
+  .mdc-richtext > :first-child {
     margin-top: 0;
   }
 
-  .mdc-lead__body > :last-child,
-  .mdc-callout__body > :last-child,
-  .mdc-key-points__body > :last-child {
+  .mdc-richtext > :last-child {
     margin-bottom: 0;
   }
 
@@ -726,8 +754,11 @@
 
   .mdc-callout {
     border-color: var(--callout-border, rgb(var(--outline-rgb)));
-    background:
-      linear-gradient(180deg, var(--callout-tint, rgba(var(--surface-muted-rgb) / 0.6)) 0%, rgba(var(--surface-rgb) / 0) 100%),
+    background: linear-gradient(
+        180deg,
+        var(--callout-tint, rgba(var(--surface-muted-rgb) / 0.6)) 0%,
+        rgba(var(--surface-rgb) / 0) 100%
+      ),
       rgb(var(--surface-rgb));
   }
 
@@ -757,34 +788,75 @@
 
   .mdc-callout__body,
   .mdc-key-points__body {
-    @apply px-5 pb-5 pt-3 text-[0.9375rem] leading-7 text-ink-soft;
+    @apply px-5 pb-5 pt-3;
   }
 
-  .mdc-callout__body p,
-  .mdc-key-points__body p {
-    @apply text-ink-soft;
+  .mdc-richtext p {
+    color: inherit;
   }
 
-  .mdc-callout__body ul,
-  .mdc-callout__body ol,
-  .mdc-key-points__body ul,
-  .mdc-key-points__body ol {
-    @apply my-4 pl-5;
+  .mdc-richtext a {
+    color: rgb(var(--ink-rgb));
+    text-decoration-line: underline;
+    text-decoration-color: rgb(var(--outline-strong-rgb));
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    transition:
+      color 150ms ease,
+      text-decoration-color 150ms ease;
   }
 
-  .mdc-callout__body li + li,
-  .mdc-key-points__body li + li {
+  .mdc-richtext a:hover {
+    color: var(--zone-color);
+    text-decoration-color: var(--zone-color);
+  }
+
+  .mdc-richtext ul,
+  .mdc-richtext ol {
+    @apply my-4 pl-6;
+  }
+
+  .mdc-richtext ul {
+    list-style: disc;
+  }
+
+  .mdc-richtext ol {
+    list-style: decimal;
+  }
+
+  .mdc-richtext li {
+    padding-left: 0.15rem;
+  }
+
+  .mdc-richtext li::marker {
+    color: color-mix(
+      in srgb,
+      var(--zone-color) 70%,
+      rgb(var(--ink-subtle-rgb))
+    );
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mdc-richtext li + li {
     margin-top: 0.45rem;
   }
 
-  .mdc-callout__body code,
-  .mdc-key-points__body code {
+  .mdc-richtext code {
     @apply rounded border border-outline bg-surface-muted px-1.5 py-0.5 font-mono text-[0.85em] text-ink;
   }
 
-  .mdc-callout__body strong,
-  .mdc-key-points__body strong {
+  .mdc-richtext strong {
     @apply font-medium text-ink;
+  }
+
+  .mdc-richtext em {
+    @apply italic text-ink;
+  }
+
+  .mdc-richtext blockquote {
+    @apply my-5 border-l-2 pl-4;
+    border-color: color-mix(in srgb, var(--zone-color) 70%, white);
+    color: rgb(var(--ink-rgb));
   }
 
   .mdc-callout[data-tone="accent"] {
