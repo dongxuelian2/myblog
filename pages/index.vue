@@ -73,7 +73,7 @@ useSeoMeta({
             <p class="eyebrow-label">首页</p>
           </div>
           <h1 class="mt-5 text-[1.75rem] font-semibold tracking-tight text-ink sm:text-[2.125rem]">
-            夏的个人博客
+            null的个人博客
           </h1>
           <blockquote class="home-quote mt-7">
             <p class="home-quote__body">
@@ -99,10 +99,10 @@ useSeoMeta({
         </div>
 
         <div class="enter enter-d1 home-marker">
-          <img :src="assetPath('/images/profile/avatar.jpg')" alt="夏的头像" class="home-marker__avatar" />
+          <img :src="assetPath('/images/profile/avatar.jpg')" alt="null的头像" class="home-marker__avatar" />
           <div class="home-marker__copy">
             <span class="eyebrow-label">Author</span>
-            <span class="home-marker__name">夏</span>
+            <span class="home-marker__name">null</span>
           </div>
         </div>
       </div>

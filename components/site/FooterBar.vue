@@ -12,7 +12,7 @@ const year = new Date().getFullYear();
 
       <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
         <div>
-          <p class="text-sm font-medium text-ink">夏的个人博客</p>
+          <p class="text-sm font-medium text-ink">null的个人博客</p>
           <p class="mt-1.5 max-w-xs text-xs leading-relaxed text-ink-subtle">
             基于 Nuxt Content 和 Tailwind CSS 构建
           </p>

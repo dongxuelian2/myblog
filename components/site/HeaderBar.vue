@@ -13,7 +13,7 @@ const links = [
     <div class="site-shell flex h-14 items-center justify-between">
       <div class="flex items-center gap-3">
         <NuxtLink to="/" class="text-lg font-semibold tracking-tight text-ink no-underline">
-          Natsu's Blog
+          null's Blog
         </NuxtLink>
         <!-- Station code badge -->
         <span class="station-code" aria-label="当前位置">

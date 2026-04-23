@@ -9,8 +9,14 @@ const props = defineProps<{
 }>();
 const assetPath = useAssetPath();
 
+const postTitle = computed(() => props.post.title || "未命名文章");
+
+const postTags = computed(() =>
+  Array.isArray(props.post.tags) ? props.post.tags : [],
+);
+
 const initials = computed(() => {
-  const cleaned = props.post.title.replace(/\s+/g, "");
+  const cleaned = postTitle.value.replace(/\s+/g, "");
   return cleaned.slice(0, 2).toUpperCase();
 });
 
@@ -52,7 +58,7 @@ const paddedIndex = computed(() =>
       <div class="flex flex-wrap items-center gap-2">
         <span class="meta-mono">{{ formatPostDate(post.date) }}</span>
         <span
-          v-for="tag in post.tags.slice(0, 2)"
+          v-for="tag in postTags.slice(0, 2)"
           :key="tag"
           class="tag-label"
         >
@@ -65,7 +71,7 @@ const paddedIndex = computed(() =>
           :to="postPath"
           class="text-ink no-underline transition-colors duration-200 hover:text-accent"
         >
-          {{ post.title }}
+          {{ postTitle }}
         </NuxtLink>
       </h2>
 
@@ -106,11 +112,11 @@ const paddedIndex = computed(() =>
             :to="postPath"
             class="text-ink no-underline transition-colors duration-200 group-hover:text-accent"
           >
-            {{ post.title }}
+            {{ postTitle }}
           </NuxtLink>
         </h2>
         <span
-          v-for="tag in post.tags.slice(0, 1)"
+          v-for="tag in postTags.slice(0, 1)"
           :key="tag"
           class="hidden shrink-0 tag-label sm:inline"
         >
