@@ -1,13 +1,9 @@
 ---
-title: "窄门：银钥匙遗稿"
+title: "窄门"
 description: "以《窄门》人物为起点展开的洛夫克拉福特式改写：门、钥匙、群星与被改写的幸福结局。"
 date: 2026-06-24
 tags:
   - 小说
-  - 洛夫克拉福特
-  - 改写
-cover: "/images/posts/narrow-gate/narrow-gate-cover.webp"
-coverAlt: "《窄门：银钥匙遗稿》封面"
 ---
 
 ## 第一部阿莉沙遗稿
